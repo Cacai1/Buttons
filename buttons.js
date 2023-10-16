@@ -86,6 +86,7 @@ TextBox.prototype = Object.create(Button.prototype);
 TextBox.prototype.constructor = TextBox;
 
 TextBox.prototype.press = function(){
+  console.log("should be working");
     if (Over(this.x,this.y,this.w,this.h),ButtonTimer.time > ButtonTimer.TimeOver){
 console.log("is over and timer is over");
         if (mouseIsPressed){
