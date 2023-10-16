@@ -54,7 +54,7 @@ Button.prototype.display = function(color2,color1){
 }
 Button.prototype.press = function(funct,...args){
     if (Over(this.x,this.y,this.w,this.h) && ButtonTimer.time > ButtonTimer.TimeOver){
-
+        console.log('This is a normal button');
         if (mouseIsPressed){
             funct(...args);
             ButtonTimer.time = 0;
