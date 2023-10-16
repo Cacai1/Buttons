@@ -87,9 +87,9 @@ TextBox.prototype.constructor = TextBox;
 
 TextBox.prototype.press = function(){
     if (Over(this.x,this.y,this.w,this.h),ButtonTimer.time > ButtonTimer.TimeOver){
-
+console.log("is over and timer is over");
         if (mouseIsPressed){
-            ButtonTimer.Time = 0;
+            ButtonTimer.time = 0;
 
             this.isTyping = true;
         }
