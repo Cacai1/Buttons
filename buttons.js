@@ -1,11 +1,18 @@
 
+
 let ButtonTimer = {
   time: 0,
-  timeOver: 10,
+  TimeOver: 10,
 };
 
-function mouseIsOver(x,y,w,h){
-  return(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h);
+function allowButtonPressing(){
+  if (ButtonTimer.time < ButtonTimer.TimeOver+2){
+    ButtonTimer.time++;
+  }
+}
+
+function Over(x,y,w,h){
+  return (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h);
 }
 
 let Button = function(){
@@ -15,9 +22,8 @@ let Button = function(){
     this.h = 0;
     this.word = "";
 };
-// all colors that are used for the buttons must be hex colors
 Button.prototype.display = function(color2,color1){
-    if (mouseIsOver(this.x,this.y,this.w,this.h)){
+    if (Over(this.x,this.y,this.w,this.h)){
         fill(color1);
     }
     else {
@@ -47,13 +53,11 @@ Button.prototype.display = function(color2,color1){
 
 }
 Button.prototype.press = function(funct,...args){
-    if (mouseIsOver(this.x,this.y,this.w,this.h) && ButtonTimer.time > ButtonTimer.timeOver){
-        console.log(ButtonTimer.time);
-        if (mouseIsPressed == true){
-            console.log(ButtonTimer.time);
+    if (Over(this.x,this.y,this.w,this.h) && ButtonTimer.time > ButtonTimer.TimeOver){
+
+        if (mouseIsPressed){
             funct(...args);
             ButtonTimer.time = 0;
-            
         }
     }
 }
@@ -82,15 +86,15 @@ TextBox.prototype = Object.create(Button.prototype);
 TextBox.prototype.constructor = TextBox;
 
 TextBox.prototype.press = function(){
-    if (mouseIsOver(this.x,this.y,this.w,this.h),ButtonTimer.time > ButtonTimer.timeOver){
+    if (Over(this.x,this.y,this.w,this.h),ButtonTimer.Time > ButtonTimer.TimeOver){
 
         if (mouseIsPressed){
-            ButtonTimer.time = 0;
+            ButtonTimer.Time = 0;
 
             this.isTyping = true;
         }
     }
-    if (mouseIsPressed && mouseIsOver(this.x,this.y,this.w,this.h) == false){
+    if (mouseIsPressed && Over(this.x,this.y,this.w,this.h) == false){
         this.isTyping = false;
     }
 
@@ -123,20 +127,6 @@ TextBox.prototype.press = function(){
 
 }
 
-let Buttons = [
-    // howScreen
-    new Button(),
-    // randomWordScreen
-    new Button(),
-    // customWordScreen
-    new Button(),
-    // options/pause/play/start
-    new Button(),
-    // random texbox/take data
-    new TextBox(),
-    new TextBox(),
-];
-
 // input how many functions that you are running
 // put the function name
 // input how many arguments there will be
@@ -163,24 +153,14 @@ function UnlimitedFunctions(numOfFunct,...args){
                 inputs.push(args[Iargs+j]);
             }
         }
-        
+
         //console.log(numOfArgs+" num of args");
         //console.log(inputs+" inputs");
 
         console.log(Iargs+" Iargs");
         funct(inputs);
-        
+
         Iargs += numOfArgs+2;
         console.log(Iargs+" new Iargs");
     }
-}
-
-
-function switchScreen(switchto){
-  if (Array.isArray(switchto)){
-    screen = switchto[0];
-  }
-  else {
-  screen = switchto;
-  }
 }
