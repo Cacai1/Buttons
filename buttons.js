@@ -86,7 +86,7 @@ TextBox.prototype = Object.create(Button.prototype);
 TextBox.prototype.constructor = TextBox;
 
 TextBox.prototype.press = function(){
-    if (Over(this.x,this.y,this.w,this.h),ButtonTimer.Time > ButtonTimer.TimeOver){
+    if (Over(this.x,this.y,this.w,this.h),ButtonTimer.time > ButtonTimer.TimeOver){
 
         if (mouseIsPressed){
             ButtonTimer.Time = 0;
