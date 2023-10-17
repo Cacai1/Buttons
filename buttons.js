@@ -30,7 +30,7 @@ Button.prototype.display = function(color2,color1){
         fill(color2);
     }
     noStroke();
-    rect(this.x,this.y,this.w,this.h,10);
+    rect(this.x,this.y,this.w,this.h,2);
     //stroke(0,0,0);
     stroke(255,255,255);
     //fill(0,0,0);
