@@ -90,6 +90,7 @@ TextBox.prototype.press = function(){
     if (Over(this.x,this.y,this.w,this.h),ButtonTimer.time > ButtonTimer.TimeOver){
 console.log("is over and timer is over");
         if (mouseIsPressed){
+          console.log("Button pressed and typing allowed");
             ButtonTimer.time = 0;
 
             this.isTyping = true;
